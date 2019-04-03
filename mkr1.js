@@ -41,7 +41,7 @@ for (let i = 0; i < fileContent.length; i++) {
 		output.push(fileContent[i]);
 	} else {
 		let name = fileContent[i];
-		while (isNaN(fileContent[i + 1]) && !endScopes[fileContent[i + 1]] && !startScopes[fileContent[i + 1]] && fileContent[i + 1].toLowerCase() === fileContent[i + 1]) {
+		while (i + 1 < fileContent.length && isNaN(fileContent[i + 1]) && !endScopes[fileContent[i + 1]] && !startScopes[fileContent[i + 1]] && fileContent[i + 1].toLowerCase() === fileContent[i + 1]) {
 			name += fileContent[i + 1];
 			i++;
 		}
@@ -51,7 +51,7 @@ for (let i = 0; i < fileContent.length; i++) {
 }
 
 for (let i = 0; i < output.length; i++) {
-	for (let j = 0; i < output.length; i++) {
+	for (let j = 0; j < output.length; j++) {
 		if (i !== j && output[i].name === output[j].name) {
 			let newValue = output[i].value + output[j].value;
 			output[j].value = newValue;
